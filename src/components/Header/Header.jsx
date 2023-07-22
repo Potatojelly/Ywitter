@@ -7,7 +7,7 @@ const Header = memo(({username, onLogout, onMyTweets, onAllTweets}) => {
             <div className={styles.logo}>
                 <img src="./img/logo.png" alt="Twitter Logo" className={styles.logoImg} />
                 <h1 className={styles.logoName}>Ywitter</h1>
-                {username && <span className={styles.logoUser}>{username}</span>}
+                {username && <span className={styles.logoUser}>@{username}</span>}
             </div>
             {username && (
                 <nav className={styles.menu}>
