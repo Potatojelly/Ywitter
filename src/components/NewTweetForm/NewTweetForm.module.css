@@ -1,0 +1,28 @@
+.tweetForm {
+    display: flex;
+    width: 100%;
+    padding: 4px 16px;
+    background-color: var(--color-grey);
+}
+
+.formBtn {
+    font-size: 1.2rem;
+    background: var(--color-blue);
+    font-weight: bold;
+    padding: 4px;
+}
+
+
+.formInput {
+    font-size: 1rem;
+    margin: 4px 0;
+}
+
+.formInput:focus {
+    outline: 2px dotted var(--color-blue);
+}
+
+.tweetInput {
+    width: 100%;
+    margin-right: 4px;
+}

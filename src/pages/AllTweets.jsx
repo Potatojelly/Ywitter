@@ -1,10 +1,9 @@
 import React from 'react';
+import Tweets from '../components/Tweets/Tweets';
 
-export default function AllTweets() {
+export default function AllTweets({tweetService}) {
     return (
-        <div>
-            AllTweets
-        </div>
+        <Tweets tweetService={tweetService} addable={true}/>
     );
 }
 

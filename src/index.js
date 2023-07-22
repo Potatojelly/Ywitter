@@ -10,8 +10,10 @@ import NotFound from './pages/NotFound';
 import Login from './pages/Login/Login';
 import { AuthProvider } from './context/AuthContext';
 import AuthService from './service/auth';
+import TweetService from './service/tweet';
 
 const authService = new AuthService();
+const tweetService = new TweetService();
 
 const router = createBrowserRouter([
   {
@@ -24,7 +26,7 @@ const router = createBrowserRouter([
       {
         index: true,
         path: "/",
-        element: <AllTweets/>
+        element: <AllTweets tweetService={tweetService}/>
       },
       {
         path: "/:username",
