@@ -20,14 +20,14 @@ export default function NewTweetForm({tweetService, onError, onCreated}) {
     };
 
     return (
-        <form className={styles.tweetForm} onSubmit={onsubmit}>
+        <form className={styles.tweetForm} onSubmit={onSubmit}>
             <input 
                 type="text"
                 placeholder='Edit your Tweet'
                 value = {tweet}
                 required
                 autoFocus
-                onChange={onchange}
+                onChange={onChange}
                 className={`${styles.formInput} ${styles.tweetInput}`} 
             />
             <button type="submit" className={styles.formBtn}>Post</button>
