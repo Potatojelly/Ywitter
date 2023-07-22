@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './Login.module.css'
 import Banner from '../../components/Banner/Banner';
 
-export default function Login() {
+export default function Login({onSignUp, onLogin}) {
     const [signup, setSignup] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -14,6 +14,11 @@ export default function Login() {
     
     const onSubmit = (event) => {
         event.preventDefault();
+        if (signup) {
+            onSignUp(username, password, name, email, url).catch(setError);
+        } else {
+            onLogin(username, password).catch(setError);
+        }
     }
 
     const setError = (error) => {

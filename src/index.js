@@ -8,11 +8,17 @@ import AllTweets from './pages/AllTweets';
 import MyTweets from './pages/MyTweets';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login/Login';
+import { AuthProvider } from './context/AuthContext';
+import AuthService from './service/auth';
+
+const authService = new AuthService();
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: (<AuthProvider authService={authService}>
+                <App/>
+              </AuthProvider>),
     errorElement: <NotFound/>,
     children: [
       {
@@ -24,13 +30,10 @@ const router = createBrowserRouter([
         path: "/:username",
         element: <MyTweets/>
       },
-      {
-        path: "/login",
-        element: <Login/>
-      }
     ]
   }
 ])
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
