@@ -1,0 +1,15 @@
+.banner {
+    margin: 8px;
+    padding: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .bannerRed {
+    background-color: var(--color-red);
+  }
+  
+  .bannerGreen {
+    background-color: var(--color-green);
+  }
+  

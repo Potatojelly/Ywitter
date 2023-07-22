@@ -1,0 +1,26 @@
+.authForm {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-black);
+    padding: 16px 32px;
+}
+
+.formInput {
+    font-size: 1rem;
+    margin: 4px 0;
+}
+
+.formSignup {
+    margin-top: 8px;
+}
+
+.formBtn {
+    font-size: 1.2rem;
+    background: var(--color-blue);
+    font-weight: bold;
+    padding: 4px;
+}
+
+.authFormBtn {
+    margin: 16px;
+  }

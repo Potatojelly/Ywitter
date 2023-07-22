@@ -7,6 +7,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import AllTweets from './pages/AllTweets';
 import MyTweets from './pages/MyTweets';
 import NotFound from './pages/NotFound';
+import Login from './pages/Login/Login';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/:username",
         element: <MyTweets/>
+      },
+      {
+        path: "/login",
+        element: <Login/>
       }
     ]
   }
