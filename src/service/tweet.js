@@ -6,8 +6,8 @@ export default class TweetService {
             createdAt: "2023-07-21T06:46:57.000Z",
             name: "Bob",
             username: "bob",
-            url: 'https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png',
-        },
+            url: "",
+        }
     ];
 
     async getTweets(username) {

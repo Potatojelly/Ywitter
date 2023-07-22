@@ -1,0 +1,16 @@
+.avatarImg {
+    width: var(--size-avatar);
+    height: var(--size-avatar);
+    border-radius: 50%;
+}
+
+.avatarTxt {
+    width: var(--size-avatar);
+    height: var(--size-avatar);
+    background-color: var(--color-grey);
+    border-radius: 50%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: var(--size-avatar);
+}

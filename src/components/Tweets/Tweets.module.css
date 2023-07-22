@@ -1,0 +1,26 @@
+.tweets {
+    box-shadow: 0 4px 8px 0 var(--color-shadow);
+    transition: 0.3s;
+    margin-bottom: 16px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tweets::-webkit-scrollbar {
+    /* Safari and Chrome */
+    background-color: var(--color-darkGrey);
+    width: 6px;
+  }
+  
+  .tweets::-webkit-scrollbar-thumb {
+    /* Safari and Chrome */
+    background-color: var(--color-blue);
+  }
+
+.tweetsEmpty {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-grey);
+    text-align: center;
+}

@@ -1,0 +1,33 @@
+.editTweetForm {
+    float: right;
+    margin-top: 4px;
+}
+
+.formInput {
+    font-size: 1rem;
+    margin: 4px 0;
+}
+
+.tweetInput {
+    width: 100%;
+    margin-right: 4px;
+}
+
+.editTweetFormAction {
+    float: right;
+    margin-top: 4px;
+}
+
+.formBtnUpdate,
+.fromBtnCancel {
+    font-size: 0.8rem;
+    background: var(--color-blue);
+    font-weight: bold;
+    padding: 4px;
+}
+
+.fromBtnCancle {
+    margin-left: 8px;
+    background: var(--color-red);
+}
+

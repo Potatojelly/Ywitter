@@ -10,6 +10,10 @@
     margin: 4px 0;
 }
 
+.fromInput:focus {
+    outline: 2px dotted var(--color-blue);
+}
+
 .formSignup {
     margin-top: 8px;
 }
@@ -23,4 +27,4 @@
 
 .authFormBtn {
     margin: 16px;
-  }
+}

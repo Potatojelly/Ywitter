@@ -1,0 +1,58 @@
+.tweet {
+    box-shadow: 0 4px 8px 0 var(--color-shadow);
+    transition: 0.3s;
+    margin-bottom: 16px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tweet:hover {
+    box-shadow: 0 8px 16px 0 var(--color-shadow);
+}
+
+.tweetContainer {
+    display: flex;
+    width: 100%;
+}
+
+.tweetBody {
+    margin: 0px 8px;
+    width: 100%;
+}
+.tweetName {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+.tweetUsername,
+.tweetDate {
+    font-size: 0.7rem;
+    margin-left: 4px;
+    color: var(--color-blue);
+    font-weight: bold;
+}
+
+.tweetUsername {
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.tweetUsername:hover {
+    background: var(--color-yellow);
+}
+
+.tweetDate {
+    color: var(--color-darkGrey);
+}
+
+.tweetAction {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.tweetActionBtn {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-blue);
+    transition: transform 300ms;
+}

@@ -2,6 +2,9 @@ import React, { memo, useEffect, useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import NewTweetForm from '../NewTweetForm/NewTweetForm';
 import { useAuth } from '../../context/AuthContext';
+import Banner from '../Banner/Banner';
+import TweetCard from "../TweetCard/TweetCard";
+import styles from './Tweets.module.css';
 
 const Tweets = memo(({tweetService, username, addable}) => {
     const navigate = useNavigate();
@@ -9,6 +12,7 @@ const Tweets = memo(({tweetService, username, addable}) => {
     const [error, setError] = useState('');
     const {user} = useAuth();
 
+    console.log(tweets && tweets);
     useEffect(()=>{
         tweetService
             .getTweets()
@@ -56,6 +60,20 @@ const Tweets = memo(({tweetService, username, addable}) => {
                     onCreated={onCreated}    
                 />
             )}
+            {error && <Banner text={error} isAlert={true}/>}
+            {tweets.length === 0 && <p className={styles.tweetsEmpty}>No Tweets Yet </p>}
+            <ul className={styles.tweets}>
+                {tweets.map((tweet)=>(
+                    <TweetCard
+                        key={tweet.id}
+                        tweet={tweet}
+                        owner={tweet.username === user.username}
+                        onDelete={onDelete}
+                        onUpdate={onUpdate}
+                        onUsernameClick={onUsernameClick}
+                    />
+                ))}
+            </ul>
         </>
     )
 })
