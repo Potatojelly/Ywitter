@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/:username",
-        element: <MyTweets/>
+        element: <MyTweets tweetService={tweetService}/>
       },
     ]
   }
