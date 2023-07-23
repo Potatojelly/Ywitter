@@ -15,10 +15,10 @@ const Tweets = memo(({tweetService, username, addable}) => {
     console.log(tweets && tweets);
     useEffect(()=>{
         tweetService
-            .getTweets()
+            .getTweets(username)
             .then((tweets) => setTweets([...tweets]))
             .catch((error) => onError(error));
-    }, [tweetService, user]);
+    }, [tweetService, username, user]);
 
     const onCreated = (tweet) => {
         setTweets((tweets) => [tweet, ...tweets]);
