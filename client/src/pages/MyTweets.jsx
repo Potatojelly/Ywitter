@@ -5,9 +5,7 @@ import Tweets from '../components/Tweets/Tweets';
 export default function MyTweets({tweetService}) {
     const {username} = useParams();
     return (
-        <div>
             <Tweets tweetService={tweetService} username={username} addable={false} />
-        </div>
     );
 }
 

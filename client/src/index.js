@@ -11,9 +11,12 @@ import Login from './pages/Login/Login';
 import { AuthProvider } from './context/AuthContext';
 import AuthService from './service/auth';
 import TweetService from './service/tweet';
+import HttpClient from './network/http';
 
+const baseURL = process.env.REACT_APP_BASE_URL;
 const authService = new AuthService();
-const tweetService = new TweetService();
+const httpClient = new HttpClient(baseURL);
+const tweetService = new TweetService(httpClient);
 
 const router = createBrowserRouter([
   {

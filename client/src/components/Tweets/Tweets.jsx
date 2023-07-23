@@ -13,6 +13,7 @@ const Tweets = memo(({tweetService, username, addable}) => {
     const {user} = useAuth();
 
     console.log(tweets && tweets);
+    
     useEffect(()=>{
         tweetService
             .getTweets(username)
