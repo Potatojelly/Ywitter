@@ -1,49 +1,24 @@
 import express from "express";
 import "express-async-errors";
-import * as tweetRepository from "../data/tweet.js";
+import * as tweetController from "../controller/tweet.js";
 
 
 const router = express.Router();
 
-router.get("/", (req, res, next) => {
-    const username = req.query.username;
-    const data = username 
-        ? tweetRepository.getAllByUsername(username)
-        : tweetRepository.getAll();
-    res.status(200).json(data);  
-});
+// GET /tweets
+// GET /tweets?username=:username
+router.get("/", tweetController.getTweets);
 
-router.get("/:id", (req, res, next) => {
-    const id = req.params.id;
-    const data = tweetRepository.getById(id);
-    if(data) {
-        res.status(200).json(data);
-    } else {
-        res.status(404).json({message: `Tweet id(${id}) is not found`});
-    }
-});
+// GET /tweets/:id
+router.get("/:id", tweetController.getTweet);
 
-router.post("/",(req, res, next) => {
-    const {text, username, name} = req.body;
-    const tweet = tweetRepository.create(text, username, name);
-    res.status(201).json(tweet);
-});
+// POST /tweets
+router.post("/", tweetController.createTweet);
 
-router.put("/:id",(req, res, next) => {
-    const id = req.params.id;
-    const text = req.body.text;
-    const tweet = tweetRepository.update(id, text);
-    if(tweet) {
-        res.status(200).json(tweet);
-    } else {
-        res.status(404).json({message: `Tweet id(${id}) is not found`});
-    }
-});
+// PUT /tweets/:id
+router.put("/:id", tweetController.updateTweet);
 
-router.delete("/:id",(req, res, next) => {
-    const id = req.params.id;
-    tweetRepository.remove(id);
-    res.sendStatus(204);
-});
+// DELETE /tweets/:id
+router.delete("/:id", tweetController.deleteTweet);
 
 export default router;
