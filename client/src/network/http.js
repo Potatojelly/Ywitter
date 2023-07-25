@@ -1,6 +1,7 @@
 export default class HttpClient {
-    constructor(baseURL) {
+    constructor(baseURL, authErrorEventBus) {
         this.baseURL = baseURL;
+        this.authErrorEventBus = authErrorEventBus;
     }
     
     async fetch(url, options) {
@@ -18,8 +19,13 @@ export default class HttpClient {
 
         if(response.status > 299 || response.status < 200) {
             const message = data && data.message ? data.message : "Something is wrong!";
-            throw new Error(message);
-        }
+            const error = new Error(message);
+            if(response.status === 401) {
+                this.authErrorEventBus.notify(error);
+                return;
+            }
+            return error;
+        } 
 
         return data;
     }

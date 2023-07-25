@@ -4,12 +4,20 @@ import Login from '../pages/Login/Login';
 
 const AuthContext = createContext({});
 
-export function AuthProvider({authService, children}) {
+
+export function AuthProvider({authService, authErrorEventBus, children}) {
     const [user,setUser] = useState(undefined);
 
     useEffect(()=>{
         authService.me().then((user) => setUser(user)).catch(console.error);
     },[authService]);
+
+    useEffect(()=>{
+        authErrorEventBus.listen((error)=>{
+            console.log(error);
+            setUser(undefined);
+        })
+    },[authErrorEventBus]);
 
     const signUp = useCallback(
         async (username, password, name, email, url) =>
@@ -50,6 +58,17 @@ export function AuthProvider({authService, children}) {
             )}
         </AuthContext.Provider>
     )
+}
+
+export class AuthErrorEventBus {
+    listen(callback) {
+        this.callback = callback;
+    }
+
+    notify(error) {
+        window.confirm("Token has been expired!");
+        this.callback(error);
+    }
 }
 
 export function useAuth() {

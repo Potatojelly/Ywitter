@@ -11,8 +11,6 @@ const Tweets = memo(({tweetService, username, addable}) => {
     const [tweets, setTweets] = useState([]);
     const [error, setError] = useState('');
     const {user} = useAuth();
-
-    console.log(tweets && tweets);
     
     useEffect(()=>{
         tweetService
@@ -46,6 +44,7 @@ const Tweets = memo(({tweetService, username, addable}) => {
     const onUsernameClick = (tweet) => navigate(`/${tweet.username}`);
 
     const onError = (error) => {
+        console.log(error.toString());
         setError(error.toString());
         setTimeout(()=> {
             setError("");
@@ -61,7 +60,7 @@ const Tweets = memo(({tweetService, username, addable}) => {
                     onCreated={onCreated}    
                 />
             )}
-            {error && <Banner text={error} isAlert={true}/>}
+            {error && <Banner text={error} isAlert={true} transient={true}/>}
             {tweets.length === 0 && <p className={styles.tweetsEmpty}>No Tweets Yet </p>}
             <ul className={styles.tweets}>
                 {tweets.map((tweet)=>(
