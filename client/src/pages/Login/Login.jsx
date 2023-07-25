@@ -50,7 +50,7 @@ export default function Login({onSignUp, onLogin}) {
     return (
         <>
             <Banner text={text} isAlert={isAlert}/>
-            <form className={styles.authForm}>
+            <form className={styles.authForm} onSubmit={onSubmit}>
                 <input 
                     name="username"
                     type="text"

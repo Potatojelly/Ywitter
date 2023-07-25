@@ -3,7 +3,6 @@ import {Outlet} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
 import Header from './components/Header/Header';
 import { useAuth } from './context/AuthContext';
-import Login from './pages/Login/Login';
 
 function App() {
   const {user, logOut} = useAuth();

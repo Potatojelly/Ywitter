@@ -19,7 +19,7 @@ export async function getAll() {
 }
 
 export async function getAllByUsername(username) {
-    return getAll().then((tweets)=>{tweets.filter((tweet)=>tweet.username === username)});
+    return getAll().then((tweets)=>(tweets.filter((tweet)=>tweet.username === username)));
 }
 
 export async function getById(id) {
