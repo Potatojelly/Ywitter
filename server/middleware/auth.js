@@ -12,6 +12,7 @@ export const isAuth = async (req,res,next) => {
     }
 
     const token = authHeader.split(" ")[1];
+    console.log(config.jwt.secretKey);
     jwt.verify(
         token,
         config.jwt.secretKey,

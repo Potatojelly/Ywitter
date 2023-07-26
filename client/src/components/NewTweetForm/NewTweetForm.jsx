@@ -10,7 +10,6 @@ export default function NewTweetForm({tweetService, onError, onCreated}) {
             .postTweet(tweet)
             .then((created)=>{
                 setTweet("");
-                onCreated(created);
             })
             .catch((error)=>onError(error))
     }
