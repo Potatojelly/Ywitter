@@ -11,7 +11,6 @@ class Socket {
         });
     
         this.io.use((socket, next)=> {
-            console.log(socket);
             const token = socket.handshake.auth.token;
             if(!token) {
                 return next(new Error("Authentication error"));
