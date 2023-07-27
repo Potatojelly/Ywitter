@@ -4,9 +4,6 @@ import {} from "express-async-errors";
 import * as userRepository from "../data/auth.js";
 import {config} from "../config.js";
 
-const jwtSecretKey = "vS58OV*ETpb81Ch#9#f6S9!I1*jh*Yo3";
-const jwtExpiresInDays = 2;
-
 export async function signup(req, res) {
     const {username, password, name, email, url} = req.body;
     const found = await userRepository.findByUsername(username);

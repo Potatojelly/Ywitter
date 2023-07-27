@@ -28,6 +28,6 @@ app.use((error, req, res, next) => {
     res.sendStatus(500);
 });
 
-db.getConnection().then(connection => console.log(connection));
+db.getConnection();
 const server = app.listen(config.host);
 initSocket(server);
