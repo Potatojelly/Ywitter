@@ -19,6 +19,8 @@ export async function signup(req, res) {
         url,
     });
     const token = createJwtToken(userId);
+
+    setToken(res, token);
     res.status(201).json({token, username});
 }
 
@@ -35,11 +37,23 @@ export async function login (req, res) {
     }
 
     const token = createJwtToken(user.id);
+    
+    setToken(res, token);
     res.status(201).json({token, username});
 }
 
 function createJwtToken(id) {
     return jwt.sign({id}, config.jwt.secretKey, {expiresIn: config.jwt.expiresInSec});
+}
+
+function setToken(res, token) {
+    const options = {
+        maxAge: config.jwt.expiresInSec * 1000,
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+    }
+    res.cookie("token", token, options)
 }
 
 export async function me(req, res, next) {
