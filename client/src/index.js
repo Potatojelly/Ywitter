@@ -7,20 +7,18 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import AllTweets from './pages/AllTweets';
 import MyTweets from './pages/MyTweets';
 import NotFound from './pages/NotFound';
-import { AuthErrorEventBus, AuthProvider } from './context/AuthContext';
+import { AuthErrorEventBus, AuthProvider, fetchToken } from './context/AuthContext';
 import AuthService from './service/auth';
 import TweetService from './service/tweet';
 import HttpClient from './network/http';
-import TokenStorage from './db/token';
 import Socket from "./network/socket.js";
 
 const baseURL = process.env.REACT_APP_BASE_URL;
 const authErroEventBus = new AuthErrorEventBus();
 const httpClient = new HttpClient(baseURL,authErroEventBus);
-const tokenStorage = new TokenStorage();
-const authService = new AuthService(httpClient,tokenStorage);
-const socketClient = new Socket(baseURL, () => tokenStorage.getToken());
-const tweetService = new TweetService(httpClient,tokenStorage, socketClient);
+const authService = new AuthService(httpClient);
+const socketClient = new Socket(baseURL, () => fetchToken());
+const tweetService = new TweetService(httpClient, socketClient);
 
 
 const router = createBrowserRouter([

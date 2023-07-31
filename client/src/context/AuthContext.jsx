@@ -1,12 +1,15 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, createRef, useCallback, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react';
 import Header from '../components/Header/Header';
 import Login from '../pages/Login/Login';
 
 const AuthContext = createContext({});
 
+const tokenRef  = createRef();
 
 export function AuthProvider({authService, authErrorEventBus, children}) {
     const [user,setUser] = useState(undefined);
+
+    useImperativeHandle(tokenRef, () => (user ? user.token : undefined));
 
     useEffect(()=>{
         authService.me().then((user) => setUser(user)).catch(console.error);
@@ -70,6 +73,8 @@ export class AuthErrorEventBus {
         this.callback(error);
     }
 }
+
+export const fetchToken = () => tokenRef.current;
 
 export function useAuth() {
     return useContext(AuthContext);
