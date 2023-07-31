@@ -39,7 +39,7 @@ export default class HttpClient {
             if(err.response) {
                 const data = err.response.data;
                 const message = data && data.message ? data.message : "Somthing went wrong!";
-                throw new Error(message);
+                throw new Error(message[0].msg);
             }
             throw new Error("connection error");
         }

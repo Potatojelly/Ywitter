@@ -46,7 +46,6 @@ const Tweets = memo(({tweetService, username, addable}) => {
     const onUsernameClick = (tweet) => navigate(`/${tweet.username}`);
 
     const onError = (error) => {
-        console.log(error.toString());
         setError(error.toString());
         setTimeout(()=> {
             setError("");
