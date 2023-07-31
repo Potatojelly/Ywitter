@@ -10,6 +10,7 @@ import {config} from "./config.js"
 import {Server} from "socket.io";
 import { initSocket } from './connection/socket.js';
 import {db} from "./db/database.js";
+import rateLimit from './middleware/rate-limiter.js';
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use(cors(corsOption));
 app.use(morgan("tiny"));
 app.use(helmet());
+app.use(rateLimit);
 
 app.use("/tweets",tweetsRouter);
 app.use("/auth", authRouter);
