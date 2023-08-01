@@ -22,6 +22,7 @@ export default function Login({onSignUp, onLogin}) {
     }
 
     const setError = (error) => {
+        console.log(error);
         setText(error.toString());
         setIsAlert(true);
     }

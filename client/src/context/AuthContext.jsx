@@ -9,7 +9,11 @@ const tokenRef  = createRef();
 export function AuthProvider({authService, authErrorEventBus, children}) {
     const [user,setUser] = useState(undefined);
 
-    useImperativeHandle(tokenRef, () => (user ? user.token : undefined));
+    //useImperativeHandle(tokenRef, () => (user ? user.token : undefined));
+
+    useEffect(()=>{
+        tokenRef.current = user ? user.token : undefined;
+    },[user])
 
     useEffect(()=>{
         authService.me().then((user) => setUser(user)).catch(console.error);
